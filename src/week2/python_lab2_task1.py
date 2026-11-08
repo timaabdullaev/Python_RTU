@@ -53,35 +53,56 @@ Examples (these are also used to check your work):
 
 def average(values: list[float]) -> float:
     """Return the average of values, or 0.0 for an empty list."""
-    # TODO: implement
-    raise NotImplementedError("average() is not implemented yet")
+    if not values:
+        return 0.0
+    return sum(values) / len(values)
 
 
 def largest_city(populations: dict[str, int]) -> tuple[str, int]:
     """Return (city, population) for the city with the largest population."""
-    # TODO: implement
-    raise NotImplementedError("largest_city() is not implemented yet")
+    if not populations:
+        return ("", 0)
+    best_city = max(populations, key=lambda k: populations[k])
+    return (best_city, populations[best_city])
 
 
 def smallest_city(populations: dict[str, int]) -> tuple[str, int]:
     """Return (city, population) for the city with the smallest population."""
-    # TODO: implement
-    raise NotImplementedError("smallest_city() is not implemented yet")
+    if not populations:
+        return ("", 0)
+    best_city = min(populations, key=lambda k: populations[k])
+    return (best_city, populations[best_city])
 
 
 def total_population(populations: dict[str, int]) -> int:
     """Return the sum of all populations."""
-    # TODO: implement
-    raise NotImplementedError("total_population() is not implemented yet")
+    return sum(populations.values())
 
 
 if __name__ == "__main__":
     # Keep all input() and print() calls inside this block, otherwise the
     # autograder cannot import your file.
 
-    # TODO: Create your own datasets - up to you to fill in the data
-    temperatures = []
-    city_population = {}
+    # 7 daily temperatures
+    temperatures = [4.5, 6.0, 3.2, 5.1, 2.8, 4.0, 4.5]
 
-    # TODO: call the functions above and print the results
-    pass
+    # At least 5 cities
+    city_population = {
+        "Riga": 605000,
+        "Daugavpils": 78000,
+        "Liepaja": 67000,
+        "Jelgava": 54000,
+        "Valmiera": 23000,
+    }
+
+    # Calling functions
+    avg_temp = average(temperatures)
+    l_name, l_pop = largest_city(city_population)
+    s_name, s_pop = smallest_city(city_population)
+    tot_pop = total_population(city_population)
+
+    # Printing output
+    print(f"Average temperature: {avg_temp:.1f}")
+    print(f"Largest city: {l_name} - {l_pop}")
+    print(f"Smallest city: {s_name} - {s_pop}")
+    print(f"Total population: {tot_pop}")
