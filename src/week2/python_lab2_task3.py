@@ -34,10 +34,8 @@ OPERATORS = ["+", "-", "*", "/", "(", ")"]
 
 def count_operators(expression: str) -> dict[str, int]:
     """Return a dict with the count of each operator in expression."""
-    # Создаем словарь, где каждый оператор изначально равен 0
     counts = {op: 0 for op in OPERATORS}
 
-    # Считаем каждый символ
     for char in expression:
         if char in counts:
             counts[char] += 1
